@@ -246,7 +246,7 @@ func downloadJre(config *ScanOptions, utils Utils) (string, error) {
 	}
 	err := utils.RunExecutable("java", "-version")
 	javaPath := "java"
-	if err != nil {
+	if err != nil || config.JreDownloadURL != "" {
 		log.Entry().Infof("No Java installation found, downloading JVM from %v", config.JreDownloadURL)
 		const maxRetries = 3
 		retries := 0
